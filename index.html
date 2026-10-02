@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>স্পেশাল ফ্রি নোট শিট (মেডিকেল + একাডেমিক)</title>
+    <title>স্পেশাল ফ্রি নোট শিট (Medical GK MCQ test)</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
         body {
@@ -229,65 +229,6 @@
         .main-menu-card .q-count::before {
             content: "📚";
             font-size: 14px;
-        }
-
-        /* ============ Subject Tabs (MCQ / CQ) ============ */
-        .subject-tabs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-        .subject-tab {
-            background: #fff;
-            border-radius: 16px;
-            padding: 26px 20px;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.07);
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            animation: fadeInUp 0.5s ease both;
-        }
-        .subject-tab:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(13, 110, 253, 0.18);
-            border-color: #0d6efd;
-        }
-        .subject-tab:active { transform: translateY(-2px) scale(0.98); }
-        .subject-tab .tab-icon {
-            width: 60px; height: 60px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-        }
-        .subject-tab h3 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #1e293b;
-            margin: 4px 0;
-        }
-        .subject-tab p {
-            font-size: 0.82rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        .subject-tab .coming-badge {
-            background: #e2e8f0;
-            color: #475569;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 12px;
-            margin-top: 6px;
         }
 
         /* ============ Colors ============ */
@@ -712,7 +653,6 @@
             .options-container.dual,
             .result-options { grid-template-columns: 1fr; }
             .timer { float: none; display: block; text-align: center; margin: 0 auto 12px; }
-            .subject-tabs-grid { grid-template-columns: 1fr; }
             .main-menu-card .card-icon { width: 52px; height: 52px; min-width: 52px; font-size: 24px; }
             .main-menu-card .card-content h3 { font-size: 1.05rem; }
         }
@@ -721,124 +661,10 @@
 <body>
 
 <!-- ============================================================
-     HOME PAGE - MAIN MENU (HSC একাডেমিক / Medical এডমিশন)
+     HOME PAGE - Medical GK MCQ test (সরাসরি)
      ============================================================ -->
 <div id="page-home">
     <header class="site-header">
-        <h1>স্পেশাল ফ্রি নোট শিট</h1>
-        <p>মেডিকেল + একাডেমিক প্রস্তুতির সম্পূর্ণ সমাধান</p>
-        <span class="badge">🎯 ১০০% ফ্রি প্র্যাকটিস</span>
-    </header>
-
-    <div class="section-title">📚 আপনার ক্যাটাগরি নির্বাচন করুন</div>
-    <div class="card-grid main-menu-grid">
-        <div class="card main-menu-card" onclick="goToHSC()">
-            <div class="topic-top">
-                <div class="card-icon icon-blue">🎓</div>
-                <div class="card-content">
-                    <h3>HSC একাডেমিক</h3>
-                    <span>১ম-২য় পত্র • MCQ ও CQ প্রস্তুতি</span>
-                </div>
-            </div>
-            <span class="q-count">১৩টি বিষয়</span>
-        </div>
-
-        <div class="card main-menu-card" onclick="goToMedical()">
-            <div class="topic-top">
-                <div class="card-icon icon-red">🩺</div>
-                <div class="card-content">
-                    <h3>Medical এডমিশন</h3>
-                    <span>মেডিকেল ভর্তি প্রস্তুতি</span>
-                </div>
-            </div>
-            <span class="q-count">৮টি বিষয়</span>
-        </div>
-    </div>
-
-    <div class="site-footer">© ২০২৫ স্পেশাল ফ্রি নোট শিট — সবার জন্য উন্মুক্ত</div>
-</div>
-
-<!-- ============================================================
-     HSC PAGE
-     ============================================================ -->
-<div id="page-hsc" class="hidden">
-    <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goHome()">← হোমে ফিরে যান</button>
-    </div>
-
-    <header class="site-header" style="margin-top:14px;">
-        <h1>🎓 HSC একাডেমিক</h1>
-        <p>বিষয় নির্বাচন করুন</p>
-        <span class="badge" id="hsc-badge">মোট ১৩টি বিষয়</span>
-    </header>
-
-    <div class="section-title">📌 বিষয় সমূহ</div>
-    <div class="card-grid" id="hsc-subjects-grid"></div>
-
-    <div class="site-footer">© ২০২৫ স্পেশাল ফ্রি নোট শিট — সবার জন্য উন্মুক্ত</div>
-</div>
-
-<!-- ============================================================
-     HSC SUBJECT → MCQ / CQ TABS
-     ============================================================ -->
-<div id="page-hsc-subject" class="hidden">
-    <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goBackToHSC()">← HSC একাডেমিকে ফিরে যান</button>
-    </div>
-
-    <header class="site-header" style="margin-top:14px;">
-        <h1 id="hsc-subject-title">বিষয়</h1>
-        <p>আপনি কী প্র্যাকটিস করতে চান?</p>
-    </header>
-
-    <div class="section-title">📝 টেস্টের ধরন</div>
-    <div class="card-grid" style="grid-template-columns: 1fr 1fr; max-width: 700px;">
-        <div class="subject-tab" onclick="hscMCQClick()">
-            <div class="tab-icon icon-blue">📝</div>
-            <h3>MCQ</h3>
-            <p>বহুনির্বাচনী প্রশ্ন</p>
-            <span class="coming-badge">শীঘ্রই আসছে</span>
-        </div>
-        <div class="subject-tab" onclick="hscCQClick()">
-            <div class="tab-icon icon-green">✍️</div>
-            <h3>CQ</h3>
-            <p>সৃজনশীল প্রশ্ন</p>
-            <span class="coming-badge">শীঘ্রই আসছে</span>
-        </div>
-    </div>
-
-    <div class="site-footer">© ২০২৫ স্পেশাল ফ্রি নোট শিট — সবার জন্য উন্মুক্ত</div>
-</div>
-
-<!-- ============================================================
-     MEDICAL PAGE
-     ============================================================ -->
-<div id="page-medical" class="hidden">
-    <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goHome()">← হোমে ফিরে যান</button>
-    </div>
-
-    <header class="site-header" style="margin-top:14px;">
-        <h1>🩺 Medical এডমিশন</h1>
-        <p>বিষয় নির্বাচন করুন</p>
-        <span class="badge" id="medical-badge">মোট ৮টি বিষয়</span>
-    </header>
-
-    <div class="section-title">📌 বিষয় সমূহ</div>
-    <div class="card-grid" id="medical-subjects-grid"></div>
-
-    <div class="site-footer">© ২০২৫ স্পেশাল ফ্রি নোট শিট — সবার জন্য উন্মুক্ত</div>
-</div>
-
-<!-- ============================================================
-     MEDICAL GK MCQ → TABS (জাতীয় / আন্তর্জাতিক)
-     ============================================================ -->
-<div id="page-medical-gk" class="hidden">
-    <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goBackToMedical()">← Medical এডমিশনে ফিরে যান</button>
-    </div>
-
-    <header class="site-header" style="margin-top:14px;">
         <h1>📚 Medical GK MCQ test</h1>
         <p>টপিক নির্বাচন করুন</p>
     </header>
@@ -876,7 +702,7 @@
      ============================================================ -->
 <div id="page-national-topics" class="hidden">
     <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goBackToMedicalGK()">← Medical GK MCQ test-এ ফিরে যান</button>
+        <button class="back-btn" onclick="goHome()">← টপিক তালিকায় ফিরে যান</button>
     </div>
 
     <header class="site-header" style="margin-top:14px;">
@@ -896,7 +722,7 @@
      ============================================================ -->
 <div id="page-international-topics" class="hidden">
     <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goBackToMedicalGK()">← Medical GK MCQ test-এ ফিরে যান</button>
+        <button class="back-btn" onclick="goHome()">← টপিক তালিকায় ফিরে যান</button>
     </div>
 
     <header class="site-header" style="margin-top:14px;">
@@ -908,29 +734,6 @@
         <span class="empty-icon">🌍</span>
         <h3>আন্তর্জাতিক বিষয়াবলির টপিক শীঘ্রই আসছে</h3>
         <p>এই সেকশনে আন্তর্জাতিক ইতিহাস, সংস্থা, চুক্তি ইত্যাদি বিষয়ের MCQ টেস্ট যুক্ত করা হবে।</p>
-        <span class="badge-coming">🚧 কাজ চলছে</span>
-    </div>
-
-    <div class="site-footer">© ২০২৫ স্পেশাল ফ্রি নোট শিট — সবার জন্য উন্মুক্ত</div>
-</div>
-
-<!-- ============================================================
-     GENERIC EMPTY PAGE (Medical অন্যান্য বিষয়ের জন্য)
-     ============================================================ -->
-<div id="page-generic-empty" class="hidden">
-    <div class="back-btn-wrap">
-        <button class="back-btn" onclick="goBackFromGeneric()">← ফিরে যান</button>
-    </div>
-
-    <header class="site-header" style="margin-top:14px;">
-        <h1 id="generic-title">বিষয়</h1>
-        <p>MCQ টেস্ট শীঘ্রই আসছে</p>
-    </header>
-
-    <div class="empty-state">
-        <span class="empty-icon">📚</span>
-        <h3 id="generic-empty-msg">এই বিষয়ের MCQ শীঘ্রই আসছে</h3>
-        <p>এখানে খুব শীঘ্রই MCQ টেস্ট যুক্ত করা হবে। টাইমিং, প্রশ্ন, ফলাফল — সবকিছু প্রস্তুত আছে শুধু প্রশ্ন যোগ করা বাকি।</p>
         <span class="badge-coming">🚧 কাজ চলছে</span>
     </div>
 
@@ -968,7 +771,7 @@
 
     <div class="result-actions">
         <button class="action-btn action-retry" onclick="retryQuiz()">🔄 আবার পরীক্ষা দিন</button>
-        <button class="action-btn action-home" onclick="goHomeFromResult()">🏠 হোমে ফিরে যান</button>
+        <button class="action-btn action-home" onclick="goHomeFromResult()">🏠 টপিক তালিকায় ফিরে যান</button>
     </div>
 
     <div class="result-list-title">📋 বিস্তারিত পর্যালোচনা</div>
@@ -1020,39 +823,6 @@
 <div class="toast" id="toast"></div>
 
 <script>
-    /* ============================================================
-       📋 HSC SUBJECTS (১৩টি)
-       ============================================================ */
-    const hscSubjects = [
-        { title: "বাংলা ১ম পত্র", icon: "📘", color: "icon-blue" },
-        { title: "বাংলা ২য় পত্র", icon: "📗", color: "icon-green" },
-        { title: "ইংরেজি ১ম পত্র", icon: "📕", color: "icon-orange" },
-        { title: "ইংরেজি ২য় পত্র", icon: "📙", color: "icon-pink" },
-        { title: "ICT", icon: "💻", color: "icon-sky" },
-        { title: "জীববিজ্ঞান ১ম পত্র (উদ্ভিদবিজ্ঞান)", icon: "🌿", color: "icon-lime" },
-        { title: "জীববিজ্ঞান ২য় পত্র (প্রাণীবিজ্ঞান)", icon: "🐾", color: "icon-amber" },
-        { title: "পদার্থবিজ্ঞান ১ম পত্র", icon: "⚛️", color: "icon-indigo" },
-        { title: "পদার্থবিজ্ঞান ২য় পত্র", icon: "🔬", color: "icon-violet" },
-        { title: "রসায়ন ১ম পত্র", icon: "🧪", color: "icon-teal" },
-        { title: "রসায়ন ২য় পত্র", icon: "⚗️", color: "icon-cyan" },
-        { title: "উচ্চতর গণিত ১ম পত্র", icon: "📐", color: "icon-purple" },
-        { title: "উচ্চতর গণিত ২য় পত্র", icon: "📏", color: "icon-rose" }
-    ];
-
-    /* ============================================================
-       📋 MEDICAL SUBJECTS (৮টি)
-       ============================================================ */
-    const medicalSubjects = [
-        { title: "Medical GK MCQ test", icon: "📚", color: "icon-red", type: "gk" },
-        { title: "Medical English MCQ", icon: "📕", color: "icon-orange", type: "generic" },
-        { title: "জীববিজ্ঞান ১ম পত্র (উদ্ভিদবিজ্ঞান)", icon: "🌿", color: "icon-lime", type: "generic" },
-        { title: "জীববিজ্ঞান ২য় পত্র (প্রাণীবিজ্ঞান)", icon: "🐾", color: "icon-amber", type: "generic" },
-        { title: "পদার্থবিজ্ঞান ১ম পত্র", icon: "⚛️", color: "icon-indigo", type: "generic" },
-        { title: "পদার্থবিজ্ঞান ২য় পত্র", icon: "🔬", color: "icon-violet", type: "generic" },
-        { title: "রসায়ন ১ম পত্র", icon: "🧪", color: "icon-teal", type: "generic" },
-        { title: "রসায়ন ২য় পত্র", icon: "⚗️", color: "icon-cyan", type: "generic" }
-    ];
-
     /* ============================================================
        📚 NATIONAL TOPICS
        ============================================================ */
@@ -1867,33 +1637,33 @@
             color: "icon-orange",
             questions: [
                 { question: "'টঙ্ক (Tonk) আন্দোলন' কি?", options: ["সাঁওতাল বিদ্রোহ", "কৃষক আন্দোলন", "প্রাকৃতিক সম্পদ রক্ষার আন্দোলন", "কোনটিই নয়"], correct: 1, source: "[BCS: 48th]", explanation: "" },
-                { question: "ফরায়েজী আন্দোলনের নেতা কে ছিলেন?/বাংলাদেশের ফরায়েজী আন্দোলনের সূচনাকারী কে?/বাংলায় ফরায়েজি আন্দোলনের উদ্যোক্তা কে ছিলেন?", options: ["শাহ ওয়ালীউল্লাহ", "হাজী শরীয়তুল্লাহ", "পীর মহসীন", "তিতুমীর"], correct: 1, source: "[BCS: 24th, 21st, 20th, 15th; DU-D: 03-04, 97-98; RU-A: 16-17]", explanation: "" },
-                { question: "'জমি থেকে খাজনা আদায় আল্লাহর আইনের পরিপন্থী'—এটি কার ঘোষণা?", options: ["তিতুমীর", "ফকির মজনু শাহ", "দুদু মিয়া", "হাজী শরীয়তুল্লাহ"], correct: 2, source: "[BCS: 14th]", explanation: "দুদু মিয়া হাজী শরীয়তুল্লাহর পুত্র।" },
-                { question: "বাংলায় ব্রিটিশ-বিরোধী প্রথম সশস্ত্র প্রতিরোধ আন্দোলন-", options: ["নীল বিদ্রোহ", "সিপাহী বিদ্রোহ", "ফকির সন্ন্যাসী বিদ্রোহ", "ফরায়েজী আন্দোলন"], correct: 2, source: "[DU-B: 19-20, 10-11; JU-C: 23-24]", explanation: "" },
-                { question: "ঢাকা ১৮৫৭ সালের সিপাহী বিদ্রোহের স্মৃতিবিজড়িত স্থান-", options: ["সোহরাওয়ার্দী উদ্যান", "লালবাগ কেল্লা", "বাহাদুরশাহ পার্ক", "রায়ের বাজার বধ্যভূমি"], correct: 2, source: "[DU-B: 07-08; JnU-B: 14-15, 10-11]", explanation: "" },
+                { question: "ফরায়েজী আন্দোলনের নেতা কে ছিলেন?/বাংলাদেশের ফরায়েজী আন্দোলনের সূচনাকারী কে?/বাংলায় ফরায়েজি আন্দোলনের উদ্যোক্তা কে ছিলেন?", options: ["শাহ ওয়ালীউল্লাহ", "হাজী শরীয়তুল্লাহ", "পীর মহসীন", "তিতুমীর"], correct: 1, source: "[BCS: 24th, 21st, 20th, 15th; DU-D: 03-04, 97-98; RU-A: 16-17]", explanation: "" },
+                { question: "'জমি থেকে খাজনা আদায় আল্লাহর আইনের পরিপন্থী'—এটি কার ঘোষণা?", options: ["তিতুমীর", "ফকির মজনু শাহ", "দুদু মিয়া", "হাজী শরীয়তুল্লাহ"], correct: 2, source: "[BCS: 14th]", explanation: "দুদু মিয়া হাজী শরীয়তুল্লাহর পুত্র।" },
+                { question: "বাংলায় ব্রিটিশ-বিরোধী প্রথম সশস্ত্র প্রতিরোধ আন্দোলন-", options: ["নীল বিদ্রোহ", "সিপাহী বিদ্রোহ", "ফকির সন্ন্যাসী বিদ্রোহ", "ফরায়েজী আন্দোলন"], correct: 2, source: "[DU-B: 19-20, 10-11; JU-C: 23-24]", explanation: "" },
+                { question: "ঢাকা ১৮৫৭ সালের সিপাহী বিদ্রোহের স্মৃতিবিজড়িত স্থান-", options: ["সোহরাওয়ার্দী উদ্যান", "লালবাগ কেল্লা", "বাহাদুরশাহ পার্ক", "রায়ের বাজার বধ্যভূমি"], correct: 2, source: "[DU-B: 07-08; JnU-B: 14-15, 10-11]", explanation: "" },
                 { question: "তেভাগা আন্দোলনের নেত্রী-", options: ["সুমিত্রা দেবী", "তারামন বিবি", "ইলা মিত্র", "মহাশ্বেতা দেবী"], correct: 2, source: "[DU-D: 04-05, 02-03; JU-C: 23-24; RU-A: 11-12]", explanation: "" },
-                { question: "মজনুশাহ কোন আন্দোলনের নেতা?", options: ["ফরায়েজি আন্দোলনের", "ওয়াহাবি আন্দোলনের", "ফকির সন্ন্যাসী আন্দোলনের", "স্বদেশি আন্দোলনের"], correct: 2, source: "[JU-C: 23-24]", explanation: "" },
+                { question: "মজনুশাহ কোন আন্দোলনের নেতা?", options: ["ফরায়েজি আন্দোলনের", "ওয়াহাবি আন্দোলনের", "ফকির সন্ন্যাসী আন্দোলনের", "স্বদেশি আন্দোলনের"], correct: 2, source: "[JU-C: 23-24]", explanation: "" },
                 { question: "১৮৫৭ খ্রি. প্রথম স্বাধীনতা সংগ্রামে নেতৃত্ব দেন মুঘল সম্রাট-", options: ["শাহজাহান", "আওরঙ্গজেব", "শাহ আলম", "বাহাদুর শাহ জাফর"], correct: 3, source: "[JU-C: 23-24]", explanation: "" },
-                { question: "নীল বিদ্রোহ ছিল একটি-", options: ["কৃষক আন্দোলন", "ধর্মীয় আন্দোলন", "জাতীয়তাবাদী আন্দোলন", "স্বদেশী আন্দোলন"], correct: 0, source: "[JU-C: 23-24]", explanation: "" },
-                { question: "১৮৫৭ খ্রি. মহাবিদ্রোহের পর বাংলায় মুসলমান জাগরণে নেতৃত্ব দেন-", options: ["নবাব সলিমুল্লাহ", "হাজী মুহাম্মদ মহসিন", "নবাব আবদুল লতিফ", "সৈয়দ আহমদ খান"], correct: 2, source: "[JU-C: 23-24]", explanation: "" },
-                { question: "১৮৫৭ মহাবিদ্রোহের সময় কোন মুসলমান নেতাকে কারাগারে বন্দি রাখা হয়?", options: ["হাজী শরিয়ত উল্লাহকে", "দুদু মিয়াকে", "জালাল উদ্দিন মোল্লাকে", "নবাব আবদুল লতিফকে"], correct: 1, source: "[JU-C: 23-24]", explanation: "" },
-                { question: "ভারতবর্ষে প্রথম স্বাধীনতা যুদ্ধ (মহাবিদ্রোহ) হয়-", options: ["১৮৫৫ খ্রি.", "১৮৫৭ খ্রি.", "১৯৩০ খ্রি.", "১৯৪৭ খ্রি."], correct: 1, source: "[JU-C: 23-24]", explanation: "" },
-                { question: "সিপাহী বিদ্রোহের সময় ভারতের গভর্নর জেনারেল কে ছিলেন?", options: ["লর্ড কর্নওয়ালিস", "লর্ড ওয়েলেসলি", "লর্ড ডালহৌসি", "লর্ড মিন্টো"], correct: -1, source: "[JU-C: 11-12]", explanation: "লর্ড ক্যানিং এর প্রশাসনের সময় সবচেয়ে গুরুত্বপূর্ণ ঘটনা হলো ১৮৫৭ সালের সিপাহী বিপ্লব-এর শুরু। তিনি বিদ্রোহী দমন করেন এবং এ ঘটনার পর ১৮৫৮ সালে পার্লামেন্টারি আইন পাস হয়। রানি ঘোষণা দ্বারা ইস্ট ইন্ডিয়া কোম্পানি এর শাসনের অবসান ঘটিয়ে ভারতের শাসনভার নিজ হাতে গ্রহণ করেন। তাই সঠিক উত্তর হবে লর্ড ক্যানিং। (নোট: অপশনে না থাকায় তথ্যটি উল্লেখ করা হলো)" },
-                { question: "ভারতে সিপাহী বিদ্রোহ সংঘটিত হয় কত সালে? / উপমহাদেশে সিপাহী বিদ্রোহ শুরু হয় কোন সালে?", options: ["১৬৫৭", "১৭৫৭", "১৮৫৭", "১৯৫৭"], correct: 2, source: "[CU-B: 22-23; RU-A: 19-20, 16-17]", explanation: "" },
-                { question: "ব্রাহ্ম ধর্মাবলম্বী নন কে?", options: ["ভবানীচরণ বন্দ্যোপাধ্যায়", "যতীন্দ্রমোহন সেনগুপ্ত", "শিবনাথ শাস্ত্রী", "প্রিন্স দ্বারকানাথ ঠাকুর"], correct: 0, source: "[CU-B: 22-23]", explanation: "" },
-                { question: "'আলীগড় আন্দোলন' পরিচালনা করেন-", options: ["সৈয়দ আমির আলী", "নওয়াব আবদুল লতিফ", "স্যার সৈয়দ আহমদ খান", "ভিভিয়ান ডিরোজিও"], correct: 2, source: "[RU-A: 20-21, 17-18]", explanation: "" },
-                { question: "সৈয়দ মীর নিসার আলী বাংলায় কী নামে পরিচিত?", options: ["দুদু মিয়া", "তিতুমীর", "ফরায়েজী", "সব্যসাচী"], correct: 1, source: "[RU-A: 17-18]", explanation: "" },
-                { question: "'আজাদ হিন্দ ফৌজ' এর সর্বাধিনায়ক কে ছিলেন?", options: ["মহাত্মা গান্ধী", "নেতাজী সুভাষ চন্দ্র বসু", "জওহর লাল নেহেরু", "সরদার বল্লভ ভাই প্যাটেল"], correct: 1, source: "[প.ম. (ব্যক্তিগত কর্মকর্তা): ২২]", explanation: "" },
+                { question: "নীল বিদ্রোহ ছিল একটি-", options: ["কৃষক আন্দোলন", "ধর্মীয় আন্দোলন", "জাতীয়তাবাদী আন্দোলন", "স্বদেশী আন্দোলন"], correct: 0, source: "[JU-C: 23-24]", explanation: "" },
+                { question: "১৮৫৭ খ্রি. মহাবিদ্রোহের পর বাংলায় মুসলমান জাগরণে নেতৃত্ব দেন-", options: ["নবাব সলিমুল্লাহ", "হাজী মুহাম্মদ মহসিন", "নবাব আবদুল লতিফ", "সৈয়দ আহমদ খান"], correct: 2, source: "[JU-C: 23-24]", explanation: "" },
+                { question: "১৮৫৭ মহাবিদ্রোহের সময় কোন মুসলমান নেতাকে কারাগারে বন্দি রাখা হয়?", options: ["হাজী শরিয়ত উল্লাহকে", "দুদু মিয়াকে", "জালাল উদ্দিন মোল্লাকে", "নবাব আবদুল লতিফকে"], correct: 1, source: "[JU-C: 23-24]", explanation: "" },
+                { question: "ভারতবর্ষে প্রথম স্বাধীনতা যুদ্ধ (মহাবিদ্রোহ) হয়-", options: ["১৮৫৫ খ্রি.", "১৮৫৭ খ্রি.", "১৯৩০ খ্রি.", "১৯৪৭ খ্রি."], correct: 1, source: "[JU-C: 23-24]", explanation: "" },
+                { question: "সিপাহী বিদ্রোহের সময় ভারতের গভর্নর জেনারেল কে ছিলেন?", options: ["লর্ড কর্নওয়ালিস", "লর্ড ওয়েলেসলি", "লর্ড ডালহৌসি", "লর্ড মিন্টো"], correct: -1, source: "[JU-C: 11-12]", explanation: "লর্ড ক্যানিং এর প্রশাসনের সময় সবচেয়ে গুরুত্বপূর্ণ ঘটনা হলো ১৮৫৭ সালের সিপাহী বিপ্লব-এর শুরু। তিনি বিদ্রোহী দমন করেন এবং এ ঘটনার পর ১৮৫৮ সালে পার্লামেন্টারি আইন পাস হয়। রানি ঘোষণা দ্বারা ইস্ট ইন্ডিয়া কোম্পানি এর শাসনের অবসান ঘটিয়েভারতের শাসনভার নিজ হাতে গ্রহণ করেন। তাই সঠিক উত্তর হবে লর্ড ক্যানিং। (নোট: অপশনে না থাকায় তথ্যটি উল্লেখ করা হলো)" },
+                { question: "ভারতে সিপাহী বিদ্রোহ সংঘটিত হয় কত সালে? / উপমহাদেশে সিপাহী বিদ্রোহ শুরু হয় কোন সালে?", options: ["১৬৫৭", "১৭৫৭", "১৮৫৭", "১৯৫৭"], correct: 2, source: "[CU-B: 22-23; RU-A: 19-20, 16-17]", explanation: "" },
+                { question: "ব্রাহ্ম ধর্মাবলম্বী নন কে?", options: ["ভবানীচরণ বন্দ্যোপাধ্যায়", "যতীন্দ্রমোহন সেনগুপ্ত", "শিবনাথ শাস্ত্রী", "প্রিন্স দ্বারকানাথ ঠাকুর"], correct: 0, source: "[CU-B: 22-23]", explanation: "" },
+                { question: "'আলীগড় আন্দোলন' পরিচালনা করেন-", options: ["সৈয়দ আমির আলী", "নওয়াব আবদুল লতিফ", "স্যার সৈয়দ আহমদ খান", "ভিভিয়ান ডিরোজিও"], correct: 2, source: "[RU-A: 20-21, 17-18]", explanation: "" },
+                { question: "সৈয়দ মীর নিসার আলী বাংলায় কী নামে পরিচিত?", options: ["দুদু মিয়া", "তিতুমীর", "ফরায়েজী", "সব্যসাচী"], correct: 1, source: "[RU-A: 17-18]", explanation: "" },
+                { question: "'আজাদ হিন্দ ফৌজ' এর সর্বাধিনায়ক কে ছিলেন?", options: ["মহাত্মা গান্ধী", "নেতাজী সুভাষ চন্দ্র বসু", "জওহর লাল নেহেরু", "সরদার বল্লভ ভাই প্যাটেল"], correct: 1, source: "[প.ম. (ব্যক্তিগত কর্মকর্তা): ২২]", explanation: "" },
                 { question: "নাচোল বিদ্রোহের নেত্রীর নাম কী?", options: ["প্রীতিলতা", "লক্ষ্মীবাণী", "কাদম্বিনী", "ইলা মিত্র"], correct: 3, source: "[প্র.ক.বৈ.ক.ম. (সিনিয়র ইনস্ট্রাক্টর): ২১; বা.স.ক (সিনিয়র ইনস্ট্রাক্টর): ২১]", explanation: "" },
-                { question: "ইস্ট ইন্ডিয়া কোম্পানির বিরুদ্ধে অস্ত্র ধারণ করে প্রথম শহীদ হয়েছিলেন-", options: ["দুদু মিয়া", "মঙ্গল পান্ডে", "সৈয়দ নিসার আলী", "নেতাজী সুভাষ চন্দ্র বসু"], correct: 1, source: "[বিজেএস (সহকারী জজ): ১৮]", explanation: "" },
-                { question: "বাঁশের কেল্লা খ্যাত স্বাধীনতা সংগ্রামী কে?", options: ["ফকির মজনু শাহ", "তিতুমীর", "দুদু মিয়া", "মীর কাশিম"], correct: 1, source: "[শিক্ষা অধিদপ্তরের সহকারী লাইব্রেরিয়ান: ১৮; প্রাথমিক (সহকারী শিক্ষক): ১২]", explanation: "" },
-                { question: "সিপাহি বিদ্রোহের নেতা কে ছিলেন?", options: ["চিত্তরঞ্জন দাশ", "সুভাষ চন্দ্র বসু", "মঙ্গল পান্ডে", "তিতুমীর"], correct: 2, source: "[বিভিন্ন মন্ত্রণালয়ের ব্যক্তিগত কর্মকর্তা: ১৮; মাধ্যমিক বিদ্যালয়ের সহকারী শিক্ষক: ০৯]", explanation: "" },
-                { question: "কী কারণে বাংলাদেশ হতে নীলচাষ বিলুপ্ত হয়-", options: ["নীলচাষ নিষিদ্ধ করার ফলে", "নীলকরদের অত্যাচারের ফলে", "নীলচাষীদের বিদ্রোহের ফলে", "কৃত্রিম নীল আবিষ্কারের ফলে"], correct: 2, source: "[বিআরআইবি'র সহকারী সচিব: ১৫]", explanation: "" },
+                { question: "ইস্ট ইন্ডিয়া কোম্পানির বিরুদ্ধে অস্ত্র ধারণ করে প্রথম শহীদ হয়েছিলেন-", options: ["দুদু মিয়া", "মঙ্গল পান্ডে", "সৈয়দ নিসার আলী", "নেতাজী সুভাষ চন্দ্র বসু"], correct: 1, source: "[বিজেএস (সহকারী জজ): ১৮]", explanation: "" },
+                { question: "বাঁশের কেল্লা খ্যাত স্বাধীনতা সংগ্রামী কে?", options: ["ফকির মজনু শাহ", "তিতুমীর", "দুদু মিয়া", "মীর কাশিম"], correct: 1, source: "[শিক্ষা অধিদপ্তরের সহকারী লাইব্রেরিয়ান: ১৮; প্রাথমিক (সহকারী শিক্ষক): ১২]", explanation: "" },
+                { question: "সিপাহি বিদ্রোহের নেতা কে ছিলেন?", options: ["চিত্তরঞ্জন দাশ", "সুভাষ চন্দ্র বসু", "মঙ্গল পান্ডে", "তিতুমীর"], correct: 2, source: "[বিভিন্ন মন্ত্রণালয়ের ব্যক্তিগত কর্মকর্তা: ১৮; মাধ্যমিক বিদ্যালয়ের সহকারী শিক্ষক: ০৯]", explanation: "" },
+                { question: "কী কারণে বাংলাদেশ হতে নীলচাষ বিলুপ্ত হয়-", options: ["নীলচাষ নিষিদ্ধ করার ফলে", "নীলকরদের অত্যাচারের ফলে", "নীলচাষীদের বিদ্রোহের ফলে", "কৃত্রিম নীল আবিষ্কারের ফলে"], correct: 2, source: "[বিআরআইবি'র সহকারী সচিব: ১৫]", explanation: "" },
                 { question: "কত সালে তিতুমীর বাঁশের কেল্লা স্থাপন করেন?", options: ["১৮৩২", "১৮৩৩", "১৮৩১", "১৮৩৪"], correct: 2, source: "[প্রাথমিক শিক্ষা অধিদপ্তরের হিসাব সহকারী: ১১]", explanation: "" },
-                { question: "ফরায়েজী আন্দোলনকে কোন নেতা রাজনৈতিক আন্দোলনে রূপদান করেন?", options: ["হাজী শরীয়তুল্লাহ", "তিতুমীর", "দুদু মিয়া", "নবাব সলিমুল্লাহ"], correct: 2, source: "[প্রাথমিক বিদ্যালয় সহকারী শিক্ষক: ১১]", explanation: "" },
+                { question: "ফরায়েজী আন্দোলনকে কোন নেতা রাজনৈতিক আন্দোলনে রূপদান করেন?", options: ["হাজী শরীয়তুল্লাহ", "তিতুমীর", "দুদু মিয়া", "নবাব সলিমুল্লাহ"], correct: 2, source: "[প্রাথমিক বিদ্যালয় সহকারী শিক্ষক: ১১]", explanation: "" },
                 { question: "ফকির আন্দোলনের নেতা কে ছিলেন?", options: ["সিরাজ শাহ", "মোহসীন আলী", "মজনু শাহ", "জহির শাহ"], correct: 2, source: "[জা.বি. (সেকশন অফিসার): ১৭; প্রাথমিক (সহকারী শিক্ষক): ১০]", explanation: "" },
-                { question: "হাজী শরীয়তুল্লাহ কোন জেলায় জন্মগ্রহণ করেন?", options: ["শরীয়তপুর", "শেরপুর", "ফরিদপুর", "যশোর"], correct: 0, source: "[অর্থ মন্ত্রণালয়ের প্রশাসনিক কর্মকর্তা: ০৪]", explanation: "হাজী শরীয়তুল্লাহর জন্মস্থান মাদারীপুর মহকুমার শামাইল গ্রাম, যা তৎকালীন সময়ে বৃহত্তর ফরিদপুর জেলার অংশ ছিল। তবে বর্তমানে শামাইল গ্রামটি শরীয়তপুর জেলার জাজিরা উপজেলার অন্তর্গত।" },
-                { question: "কত সালে নীল কমিশন গঠন করা হয়?", options: ["১৮৬১ সালে", "১৮৫৭ সালে", "১৭৪৫ সালে", "১৯৯২ সালে"], correct: 0, source: "[ডাক বিভাগের মেইল অপারেটর]", explanation: "নোট: ঐতিহাসিক নীল কমিশন ১৮৬০ সালে গঠিত হলেও প্রদত্ত বিকল্প অনুযায়ী 'a' চিহ্নিত রয়েছে।" }
+                { question: "হাজী শরীয়তুল্লাহ কোন জেলায় জন্মগ্রহণ করেন?", options: ["শরীয়তপুর", "শেরপুর", "ফরিদপুর", "যশোর"], correct: 0, source: "[অর্থ মন্ত্রণালয়ের প্রশাসনিক কর্মকর্তা: ০৪]", explanation: "হাজী শরীয়তুল্লাহর জন্মস্থান মাদারীপুর মহকুমার শামাইল গ্রাম, যা তৎকালীন সময়ে বৃহত্তর ফরিদপুর জেলার অংশ ছিল। তবে বর্তমানে শামাইল গ্রামটি শরীয়তপুর জেলার জাজিরা উপজেলার অন্তর্গত।" },
+                { question: "কত সালে নীল কমিশন গঠন করা হয়?", options: ["১৮৬১ সালে", "১৮৫৭ সালে", "১৭৪৫ সালে", "১৯৯২ সালে"], correct: 0, source: "[ডাক বিভাগের মেইল অপারেটর]", explanation: "নোট: ঐতিহাসিক নীল কমিশন ১৮৬০ সালে গঠিত হলেও প্রদত্ত বিকল্প অনুযায়ী 'a' চিহ্নিত রয়েছে।" }
             ]
         }
     ];
@@ -1907,8 +1677,6 @@
     let userAnswers = [];
     let totalTime = 0;
     let timerInterval = null;
-    let currentMedicalSubject = null;
-    let currentHSCSubject = null;
 
     function toBanglaNumber(num) {
         const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
@@ -1920,40 +1688,8 @@
     }
 
     /* ============================================================
-       🎴 RENDER HOME
+       🎴 RENDER
        ============================================================ */
-    function renderHSCSubjects() {
-        const grid = document.getElementById('hsc-subjects-grid');
-        grid.innerHTML = hscSubjects.map((s, i) => `
-            <div class="card topic-card" style="animation-delay:${0.05 + i * 0.04}s" onclick="openHSCSubject('${s.title.replace(/'/g, "\\'")}')">
-                <div class="topic-top">
-                    <div class="card-icon ${s.color}">${s.icon}</div>
-                    <div class="card-content">
-                        <h3>${s.title}</h3>
-                        <span>MCQ ও CQ প্রস্তুতি</span>
-                    </div>
-                </div>
-                <span class="q-count">MCQ + CQ</span>
-            </div>
-        `).join('');
-    }
-
-    function renderMedicalSubjects() {
-        const grid = document.getElementById('medical-subjects-grid');
-        grid.innerHTML = medicalSubjects.map((s, i) => `
-            <div class="card topic-card" style="animation-delay:${0.05 + i * 0.05}s" onclick="openMedicalSubject('${s.title.replace(/'/g, "\\'")}')">
-                <div class="topic-top">
-                    <div class="card-icon ${s.color}">${s.icon}</div>
-                    <div class="card-content">
-                        <h3>${s.title}</h3>
-                        <span>${s.type === 'gk' ? 'জাতীয় + আন্তর্জাতিক' : 'MCQ টেস্ট'}</span>
-                    </div>
-                </div>
-                <span class="q-count">${s.type === 'gk' ? '২টি টপিক' : 'MCQ'}</span>
-            </div>
-        `).join('');
-    }
-
     function renderNationalTopics() {
         const grid = document.getElementById('national-topic-grid');
         grid.innerHTML = nationalTopics.map((t, i) => `
@@ -1973,8 +1709,6 @@
         document.getElementById('national-topic-count').innerText = `${toBanglaNumber(nationalTopics.length)}টি টপিক`;
     }
 
-    renderHSCSubjects();
-    renderMedicalSubjects();
     renderNationalTopics();
 
     /* ============================================================
@@ -1992,7 +1726,7 @@
     /* ============================================================
        📄 PAGE NAVIGATION
        ============================================================ */
-    const allPages = ['page-home', 'page-hsc', 'page-hsc-subject', 'page-medical', 'page-medical-gk', 'page-national-topics', 'page-international-topics', 'page-generic-empty'];
+    const allPages = ['page-home', 'page-national-topics', 'page-international-topics'];
 
     function showPage(pageId) {
         allPages.forEach(p => document.getElementById(p).classList.add('hidden'));
@@ -2002,61 +1736,8 @@
     }
 
     function goHome() { showPage('page-home'); }
-    function goToHSC() { showPage('page-hsc'); }
-    function goToMedical() { showPage('page-medical'); }
-    function goBackToHSC() { showPage('page-hsc'); }
-    function goBackToMedical() { showPage('page-medical'); }
-    function goBackToMedicalGK() { showPage('page-medical-gk'); }
     function goToNationalTopics() { showPage('page-national-topics'); }
     function goToInternationalTopics() { showPage('page-international-topics'); }
-
-    /* ============================================================
-       🎓 HSC SUBJECT → MCQ / CQ
-       ============================================================ */
-    function openHSCSubject(title) {
-        currentHSCSubject = title;
-        document.getElementById('hsc-subject-title').innerText = title;
-        showPage('page-hsc-subject');
-    }
-
-    function hscMCQClick() {
-        showToast('🚧 MCQ সেকশন শীঘ্রই আসছে!');
-    }
-    function hscCQClick() {
-        showToast('🚧 CQ সেকশন শীঘ্রই আসছে!');
-    }
-
-    /* ============================================================
-       🩺 MEDICAL SUBJECT HANDLER
-       ============================================================ */
-    function openMedicalSubject(title) {
-        const subject = medicalSubjects.find(s => s.title === title);
-        if (!subject) return;
-        currentMedicalSubject = subject;
-
-        if (subject.type === 'gk') {
-            showPage('page-medical-gk');
-        } else {
-            document.getElementById('generic-title').innerText = subject.title;
-            document.getElementById('generic-empty-msg').innerText = `${subject.title} — MCQ শীঘ্রই আসছে`;
-            showPage('page-generic-empty');
-        }
-    }
-
-    let lastPageBeforeGeneric = 'page-medical';
-    function goBackFromGeneric() {
-        showPage(lastPageBeforeGeneric);
-    }
-
-    // Generic pages এর back button ট্র্যাকিং
-    const originalShowPage = showPage;
-    showPage = function(pageId) {
-        if (pageId === 'page-generic-empty') {
-            const currentVisible = allPages.find(p => !document.getElementById(p).classList.contains('hidden'));
-            if (currentVisible) lastPageBeforeGeneric = currentVisible;
-        }
-        originalShowPage(pageId);
-    };
 
     /* ============================================================
        🎯 QUIZ LOGIC
@@ -2121,7 +1802,7 @@
                 updateTimerDisplay();
                 timerEl.classList.add('pulse');
                 clearInterval(timerInterval);
-                alert("সময় শেষ হয়ে গেছে!");
+                showToast('⏰ সময় শেষ হয়ে গেছে!');
                 submitQuiz();
                 return;
             }
@@ -2272,12 +1953,12 @@
         const total = activeQuestions.length;
         const percent = total > 0 ? Math.round((score / total) * 100) : 0;
 
-        document.getElementById('rp-score').innerText = toBanglaNumber(pad2(score));
-        document.getElementById('rp-total').innerText = '/ ' + toBanglaNumber(pad2(total));
+        document.getElementById('rp-score').innerText = toBanglaNumber(score);
+        document.getElementById('rp-total').innerText = '/ ' + toBanglaNumber(total);
         document.getElementById('rp-percent').innerText = toBanglaNumber(percent) + '%';
-        document.getElementById('rp-correct').innerText = toBanglaNumber(pad2(correctCount));
-        document.getElementById('rp-wrong').innerText = toBanglaNumber(pad2(wrongCount));
-        document.getElementById('rp-skip').innerText = toBanglaNumber(pad2(skipCount));
+        document.getElementById('rp-correct').innerText = toBanglaNumber(correctCount);
+        document.getElementById('rp-wrong').innerText = toBanglaNumber(wrongCount);
+        document.getElementById('rp-skip').innerText = toBanglaNumber(skipCount);
 
         let msg = '';
         if (percent >= 80) msg = '🌟 অসাধারণ! চমৎকার ফলাফল।';
@@ -2295,8 +1976,7 @@
 
     function retryQuiz() {
         document.getElementById('result-page').classList.remove('open');
-        document.getElementById('page-national-topics').classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showPage('page-national-topics');
         setTimeout(() => openQuiz(), 300);
     }
 
