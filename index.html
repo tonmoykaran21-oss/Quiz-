@@ -6,11 +6,35 @@
     <title>স্পেশাল ফ্রি নোট শিট (Medical GK MCQ test)</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
+        html, body { height: 100%; }
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
-            padding: 20px 15px 40px;
+            padding: 20px 15px 90px; /* extra bottom padding for sticky ad */
             color: #1e293b;
+        }
+
+        /* ===== Sticky Bottom Ad Container ===== */
+        #sticky-bottom-ad {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            min-height: 60px;
+            background: rgba(255, 255, 255, 0.98);
+            border-top: 1px solid #e2e8f0;
+            box-shadow: 0 -4px 14px rgba(15, 23, 42, 0.12);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 4px 8px;
+            backdrop-filter: blur(6px);
+        }
+        #sticky-bottom-ad > * {
+            max-width: 100%;
         }
 
         .site-header {
@@ -251,7 +275,7 @@
             display: none;
             justify-content: center;
             align-items: flex-start;
-            padding: 20px 15px 40px;
+            padding: 20px 15px 90px; /* extra bottom padding for sticky ad */
             z-index: 100;
             overflow-y: auto;
             animation: fadeIn 0.3s ease both;
@@ -564,7 +588,7 @@
 
         .toast {
             position: fixed;
-            bottom: 24px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%) translateY(80px);
             background: #1e293b;
@@ -576,7 +600,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.25);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 300;
+            z-index: 9999;
             pointer-events: none;
         }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -649,6 +673,9 @@
     </style>
 </head>
 <body>
+
+<!-- ===== Sticky Bottom Ad Container (fixed) ===== -->
+<div id="sticky-bottom-ad"></div>
 
 <div id="page-home">
     <header class="site-header">
@@ -2260,7 +2287,43 @@
     });
 </script>
 
-<!-- ===== ADSTERRA SOCIAL BAR ===== -->
+<!-- ===== Adsterra Script (Bottom Sticky Container) ===== -->
+<script type="text/javascript">
+    // Move Adsterra-generated ad into our sticky bottom container
+    (function() {
+        var sticky = document.getElementById('sticky-bottom-ad');
+        if (!sticky) return;
+
+        // Observe the body for Adsterra's injected elements and relocate them
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+                m.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) {
+                        // Adsterra injects elements with id/class containing typical patterns
+                        var isAd = false;
+                        var id = (node.id || '').toLowerCase();
+                        var cls = (node.className && typeof node.className === 'string') ? node.className.toLowerCase() : '';
+                        if (
+                            id.indexOf('adsterra') !== -1 ||
+                            id.indexOf('at-') === 0 ||
+                            id.indexOf('as-') === 0 ||
+                            cls.indexOf('adsterra') !== -1 ||
+                            cls.indexOf('at-') !== -1 ||
+                            cls.indexOf('as-') !== -1 ||
+                            (node.tagName === 'IFRAME' && !sticky.contains(node))
+                        ) {
+                            isAd = true;
+                        }
+                        if (isAd && !sticky.contains(node)) {
+                            sticky.appendChild(node);
+                        }
+                    }
+                });
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: false });
+    })();
+</script>
 <script src="https://hystericallikingdowntown.com/82/0b/a0/820ba05d927cdf83a0540f9d9d85d907.js"></script>
 
 </body>
