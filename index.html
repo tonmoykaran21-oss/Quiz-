@@ -9,35 +9,42 @@
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
-            padding: 20px 15px 40px;
+            padding: 20px 15px 130px;
             color: #1e293b;
         }
 
-        /* ===== Sticky Bottom-Right Ad (160x300) ===== */
+        /* ===== Sticky Bottom Ad (728x90) ===== */
         #sticky-ad-container {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 160px;
-            height: 300px;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 9998;
-            background: transparent;
-            overflow: visible;
-        }
-        #sticky-ad-container .ad-iframe-wrap {
-            width: 160px;
-            height: 300px;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.18);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 40px 6px 6px;
+            min-height: 90px;
+            transition: transform 0.3s ease;
+        }
+        #sticky-ad-container .ad-frame-wrap {
+            width: 728px;
+            max-width: 100%;
+            height: 90px;
+            background: #f8fafc;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #sticky-ad-close {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 24px;
-            height: 24px;
+            top: 6px;
+            right: 6px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: #1e293b;
             color: #fff;
@@ -58,19 +65,36 @@
             transform: scale(1.1) rotate(90deg);
         }
 
-        /* মোবাইলে ছোট স্ক্রিনে কিছুটা ছোট/অ্যাডজাস্ট */
-        @media (max-width: 360px) {
+        /* ছোট স্ক্রিনে (মোবাইল/ট্যাব) — 728x90 কে স্কেল করে ছোট দেখানো */
+        @media (max-width: 768px) {
             #sticky-ad-container {
-                right: 4px;
-                bottom: 4px;
-                transform: scale(0.9);
-                transform-origin: bottom right;
+                min-height: 60px;
+                padding: 3px 32px 3px 3px;
+                overflow: hidden;
+            }
+            #sticky-ad-container .ad-frame-wrap {
+                width: 728px;
+                height: 90px;
+                transform: scale(0.75);
+                transform-origin: center;
+            }
+        }
+        @media (max-width: 500px) {
+            #sticky-ad-container {
+                min-height: 52px;
+                padding: 3px 28px 3px 3px;
+            }
+            #sticky-ad-container .ad-frame-wrap {
+                transform: scale(0.55);
             }
         }
 
         /* কুইজ মোডাল খোলা থাকলে অ্যাড লুকানো (যাতে প্রশ্ন দেখা যায়) */
         body.quiz-open #sticky-ad-container {
             display: none;
+        }
+        body.quiz-open {
+            padding-bottom: 20px;
         }
 
         .site-header {
@@ -710,20 +734,20 @@
 </head>
 <body>
 
-<!-- ===== Sticky Bottom-Right Ad (160x300) ===== -->
+<!-- ===== Sticky Bottom Ad (728x90) ===== -->
 <div id="sticky-ad-container">
     <button id="sticky-ad-close" title="বন্ধ করুন" onclick="closeStickyAd()">✕</button>
-    <div class="ad-iframe-wrap">
+    <div class="ad-frame-wrap">
         <script>
           atOptions = {
-            'key' : 'f151d3915e37842f7f8164a73c2fab33',
+            'key' : '18340e9fdd5f8cafffc4d5e2ca97c9d0',
             'format' : 'iframe',
-            'height' : 300,
-            'width' : 160,
+            'height' : 90,
+            'width' : 728,
             'params' : {}
           };
         </script>
-        <script src="https://hystericallikingdowntown.com/f151d3915e37842f7f8164a73c2fab33/invoke.js"></script>
+        <script src="https://hystericallikingdowntown.com/18340e9fdd5f8cafffc4d5e2ca97c9d0/invoke.js"></script>
     </div>
 </div>
 
@@ -879,6 +903,7 @@
     function closeStickyAd() {
         const el = document.getElementById('sticky-ad-container');
         if (el) el.style.display = 'none';
+        document.body.style.paddingBottom = '20px';
     }
 
     const nationalTopics = [
