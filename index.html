@@ -6,35 +6,71 @@
     <title>স্পেশাল ফ্রি নোট শিট (Medical GK MCQ test)</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
-        html, body { height: 100%; }
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
-            padding: 20px 15px 90px; /* extra bottom padding for sticky ad */
+            padding: 20px 15px 40px;
             color: #1e293b;
         }
 
-        /* ===== Sticky Bottom Ad Container ===== */
-        #sticky-bottom-ad {
+        /* ===== Sticky Bottom-Right Ad (160x300) ===== */
+        #sticky-ad-container {
             position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            min-height: 60px;
-            background: rgba(255, 255, 255, 0.98);
-            border-top: 1px solid #e2e8f0;
-            box-shadow: 0 -4px 14px rgba(15, 23, 42, 0.12);
+            bottom: 10px;
+            right: 10px;
+            width: 160px;
+            height: 300px;
             z-index: 9998;
+            background: transparent;
+            overflow: visible;
+        }
+        #sticky-ad-container .ad-iframe-wrap {
+            width: 160px;
+            height: 300px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        #sticky-ad-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #1e293b;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            padding: 4px 8px;
-            backdrop-filter: blur(6px);
+            line-height: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.18s ease, background 0.18s ease;
+            z-index: 9999;
         }
-        #sticky-bottom-ad > * {
-            max-width: 100%;
+        #sticky-ad-close:hover {
+            background: #dc3545;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        /* মোবাইলে ছোট স্ক্রিনে কিছুটা ছোট/অ্যাডজাস্ট */
+        @media (max-width: 360px) {
+            #sticky-ad-container {
+                right: 4px;
+                bottom: 4px;
+                transform: scale(0.9);
+                transform-origin: bottom right;
+            }
+        }
+
+        /* কুইজ মোডাল খোলা থাকলে অ্যাড লুকানো (যাতে প্রশ্ন দেখা যায়) */
+        body.quiz-open #sticky-ad-container {
+            display: none;
         }
 
         .site-header {
@@ -275,8 +311,8 @@
             display: none;
             justify-content: center;
             align-items: flex-start;
-            padding: 20px 15px 90px; /* extra bottom padding for sticky ad */
-            z-index: 100;
+            padding: 20px 15px 40px;
+            z-index: 10000;
             overflow-y: auto;
             animation: fadeIn 0.3s ease both;
         }
@@ -588,7 +624,7 @@
 
         .toast {
             position: fixed;
-            bottom: 80px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(80px);
             background: #1e293b;
@@ -600,7 +636,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.25);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 9999;
+            z-index: 10001;
             pointer-events: none;
         }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -674,8 +710,22 @@
 </head>
 <body>
 
-<!-- ===== Sticky Bottom Ad Container (fixed) ===== -->
-<div id="sticky-bottom-ad"></div>
+<!-- ===== Sticky Bottom-Right Ad (160x300) ===== -->
+<div id="sticky-ad-container">
+    <button id="sticky-ad-close" title="বন্ধ করুন" onclick="closeStickyAd()">✕</button>
+    <div class="ad-iframe-wrap">
+        <script>
+          atOptions = {
+            'key' : 'f151d3915e37842f7f8164a73c2fab33',
+            'format' : 'iframe',
+            'height' : 300,
+            'width' : 160,
+            'params' : {}
+          };
+        </script>
+        <script src="https://hystericallikingdowntown.com/f151d3915e37842f7f8164a73c2fab33/invoke.js"></script>
+    </div>
+</div>
 
 <div id="page-home">
     <header class="site-header">
@@ -825,6 +875,12 @@
 <div class="toast" id="toast"></div>
 
 <script>
+    /* ===== Sticky Ad Close ===== */
+    function closeStickyAd() {
+        const el = document.getElementById('sticky-ad-container');
+        if (el) el.style.display = 'none';
+    }
+
     const nationalTopics = [
         {
             id: "bangla-origin",
@@ -2051,11 +2107,13 @@
     function openQuiz() {
         document.getElementById('quiz-modal').classList.add('open');
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('quiz-open');
         resetQuiz();
     }
     function closeQuiz() {
         document.getElementById('quiz-modal').classList.remove('open');
         document.body.style.overflow = '';
+        document.body.classList.remove('quiz-open');
         if (timerInterval) clearInterval(timerInterval);
     }
     function resetQuiz() {
@@ -2183,6 +2241,7 @@
         document.getElementById('timer-display').classList.remove('pulse');
         document.getElementById('quiz-modal').classList.remove('open');
         document.body.style.overflow = '';
+        document.body.classList.remove('quiz-open');
 
         let score = 0, correctCount = 0, wrongCount = 0, skipCount = 0;
         const labels = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -2286,45 +2345,6 @@
         if (e.target.id === 'quiz-modal') closeQuiz();
     });
 </script>
-
-<!-- ===== Adsterra Script (Bottom Sticky Container) ===== -->
-<script type="text/javascript">
-    // Move Adsterra-generated ad into our sticky bottom container
-    (function() {
-        var sticky = document.getElementById('sticky-bottom-ad');
-        if (!sticky) return;
-
-        // Observe the body for Adsterra's injected elements and relocate them
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(m) {
-                m.addedNodes.forEach(function(node) {
-                    if (node.nodeType === 1) {
-                        // Adsterra injects elements with id/class containing typical patterns
-                        var isAd = false;
-                        var id = (node.id || '').toLowerCase();
-                        var cls = (node.className && typeof node.className === 'string') ? node.className.toLowerCase() : '';
-                        if (
-                            id.indexOf('adsterra') !== -1 ||
-                            id.indexOf('at-') === 0 ||
-                            id.indexOf('as-') === 0 ||
-                            cls.indexOf('adsterra') !== -1 ||
-                            cls.indexOf('at-') !== -1 ||
-                            cls.indexOf('as-') !== -1 ||
-                            (node.tagName === 'IFRAME' && !sticky.contains(node))
-                        ) {
-                            isAd = true;
-                        }
-                        if (isAd && !sticky.contains(node)) {
-                            sticky.appendChild(node);
-                        }
-                    }
-                });
-            });
-        });
-        observer.observe(document.body, { childList: true, subtree: false });
-    })();
-</script>
-<script src="https://hystericallikingdowntown.com/82/0b/a0/820ba05d927cdf83a0540f9d9d85d907.js"></script>
 
 </body>
 </html>
