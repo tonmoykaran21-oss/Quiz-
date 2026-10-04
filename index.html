@@ -708,9 +708,20 @@
 </head>
 <body>
 
-<!-- ===== Sticky Bottom Ad (728x90) — Auto Refresh every 40s ===== -->
+<!-- ===== Sticky Bottom Ad (728x90) ===== -->
 <div id="sticky-ad-container">
-    <div class="ad-frame-wrap" id="ad-frame-wrap"></div>
+    <div class="ad-frame-wrap">
+        <script>
+          atOptions = {
+            'key' : '18340e9fdd5f8cafffc4d5e2ca97c9d0',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://hystericallikingdowntown.com/18340e9fdd5f8cafffc4d5e2ca97c9d0/invoke.js"></script>
+    </div>
 </div>
 
 <div id="page-home">
@@ -861,34 +872,6 @@
 <div class="toast" id="toast"></div>
 
 <script>
-    /* ===== Sticky Ad Auto Refresh (every 40 seconds) ===== */
-    (function autoRefreshAd() {
-        const adWrap = document.getElementById('ad-frame-wrap');
-        if (!adWrap) return;
-
-        function loadAd() {
-            adWrap.innerHTML = '';
-            window.atOptions = {
-                'key' : '18340e9fdd5f8cafffc4d5e2ca97c9d0',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-            const s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = 'https://hystericallikingdowntown.com/18340e9fdd5f8cafffc4d5e2ca97c9d0/invoke.js?_=' + Date.now();
-            s.async = true;
-            adWrap.appendChild(s);
-        }
-
-        // প্রথমবার লোড
-        loadAd();
-
-        // প্রতি ৪০ সেকেন্ড পরপর রিফ্রেশ
-        setInterval(loadAd, 40000);
-    })();
-
     const nationalTopics = [
         {
             id: "bangla-origin",
